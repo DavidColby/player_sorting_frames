@@ -6,6 +6,11 @@ class PlayersController < ApplicationController
     @players = Player.all
   end
 
+  def list
+    players = Player.includes(:team).order("#{params[:column]} asc")
+    render(partial: 'players', locals: { players: players })
+  end
+
   # GET /players/1
   def show
   end

@@ -1,15 +1,15 @@
-<div id="players" class="shadow overflow-hidden rounded border-b border-gray-200">
+<%= turbo_frame_tag "players", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
   <table class="min-w-full bg-white">
     <thead class="bg-gray-800 text-white">
       <tr>
         <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-          <span>Name</span>
+          <%= build_order_link(column: "name", label: "Name") %>
         </th>
         <th id="players-team" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-          <span>Team</span>
+          <%= build_order_link(column: "teams.name", label: "Team") %>
         </th>
         <th id="players-seasons" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-          <span>Seasons</span>
+          <%= build_order_link(column: "seasons", label: "Seasons") %>
         </th>
       </tr>
     </thead>
@@ -24,4 +24,4 @@
       <% end %>
     </tbody>
   </table>
-</div>
+<% end %>
