@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
   end
 
   def list
-    players = Player.includes(:team).order("#{params[:column]} asc")
+    players = Player.includes(:team).order("#{params[:column]} #{params[:direction]}")
     render(partial: 'players', locals: { players: players })
   end
 
