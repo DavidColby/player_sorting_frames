@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sort {
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.sort-desc {
+  border-top: 8px solid #fff;
+}
+
+.sort-asc {
+  border-bottom: 8px solid #fff;
+}

@@ -10,4 +10,8 @@ module PlayersHelper
   def next_direction
     params[:direction] == 'asc' ? 'desc' : 'asc'
   end
+
+  def sort_indicator
+    tag.span(class: "sort sort-#{params[:direction]}")
+  end
 end

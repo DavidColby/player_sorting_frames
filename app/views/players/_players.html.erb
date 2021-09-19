@@ -2,13 +2,16 @@
   <table class="min-w-full bg-white">
     <thead class="bg-gray-800 text-white">
       <tr>
-        <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "name" %>
           <%= build_order_link(column: "name", label: "Name") %>
         </th>
-        <th id="players-team" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-team" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "teams.name" %>
           <%= build_order_link(column: "teams.name", label: "Team") %>
         </th>
-        <th id="players-seasons" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-seasons" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "seasons" %>
           <%= build_order_link(column: "seasons", label: "Seasons") %>
         </th>
       </tr>
