@@ -4,7 +4,7 @@ To follow along with the tutorial, work from the main branch.
 
 The final, working implementation lives in the sortable branch.
 
-##Project setup
+## Project setup
 After cloning this repo:
 
 ```
