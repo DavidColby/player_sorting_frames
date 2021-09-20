@@ -1,24 +1,19 @@
-# README
+This repo demonstrates using Ruby on Rails and Turbo Frames to create a sortable table. The code in this repo is intended to accompany the tutorial originally published on [my blog](https://www.colby.so/posts/sortable-table-with-rails-and-turbo-frames).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To follow along with the tutorial, work from the main branch.
 
-Things you may want to cover:
+The final, working implementation lives in the sortable branch.
 
-* Ruby version
+##Project setup
+After cloning this repo:
 
-* System dependencies
+```
+bundle install
+rails db:create && db:migrate
+```
 
-* Configuration
+Start the server and compile assets with `bin/dev`
 
-* Database creation
+After setup, visit http://localhost:3000/players.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The final implementation can also be seen on [Heroku](https://aqueous-stream-31641.herokuapp.com/).
