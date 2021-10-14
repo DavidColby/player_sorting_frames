@@ -1,17 +1,36 @@
+<div class="flex justify-end mb-1">
+  <%= form_with url: list_players_path, method: :get, data: { controller: "search-form", search_form_target: "form", turbo_frame: "players" } do |form| %>
+    <%= form.select :team_id,
+      options_for_select(Team.all.pluck(:name, :id), session.dig('player_filters', 'team_id')),
+      { include_blank: 'All Teams' },
+      class: "border-blue-500 rounded",
+      data: {
+        action: "change->search-form#search"
+      }
+    %>
+    <%= form.text_field :name,
+      placeholder: "Search by name",
+      value: session.dig('player_filters', 'name'),
+      class: "border border-blue-500 rounded p-2",
+      autocomplete: "off",
+      data: { action: "input->search-form#search" }
+    %>
+  <% end %>
+</div>
 <%= turbo_frame_tag "players", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
   <table class="min-w-full bg-white">
     <thead class="bg-gray-800 text-white">
       <tr>
         <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-          <%= sort_indicator if params[:column] == "name" %>
+          <%= sort_indicator if session.dig('player_filters', 'column') == "name" %>
           <%= build_order_link(column: "name", label: "Name") %>
         </th>
         <th id="players-team" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-          <%= sort_indicator if params[:column] == "teams.name" %>
+          <%= sort_indicator if session.dig('player_filters', 'column') == "teams.name" %>
           <%= build_order_link(column: "teams.name", label: "Team") %>
         </th>
         <th id="players-seasons" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-          <%= sort_indicator if params[:column] == "seasons" %>
+          <%= sort_indicator if session.dig('player_filters', 'column') == "seasons" %>
           <%= build_order_link(column: "seasons", label: "Seasons") %>
         </th>
       </tr>

@@ -1,13 +1,14 @@
 class PlayersController < ApplicationController
+  include Filterable
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
   def index
-    @players = Player.includes(:team)
+    @players = filter!(Player)
   end
 
   def list
-    players = Player.includes(:team).order("#{params[:column]} #{params[:direction]}")
+    players = filter!(Player)
     render(partial: 'players', locals: { players: players })
   end
 
@@ -59,5 +60,9 @@ class PlayersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def player_params
       params.require(:player).permit(:name, :team_id, :seasons)
+    end
+
+    def filter_params
+      params.permit(:name, :column, :direction)
     end
 end
