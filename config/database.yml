@@ -25,10 +25,10 @@ development:
 
 test:
   <<: *default
-  database: player_sort_frames
+  database: player_sort_frames_test
 
 production:
   <<: *default
-  database: player_sort_frames
+  database: player_sort_frames_production
   username: postgres
   password: <%= ENV['POSTGRES_DATABASE_PASSWORD'] %>
