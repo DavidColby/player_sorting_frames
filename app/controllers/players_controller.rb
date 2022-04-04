@@ -3,7 +3,12 @@ class PlayersController < ApplicationController
 
   # GET /players
   def index
-    @players = Player.all
+    @players = Player.includes(:team)
+  end
+
+  def list
+    players = Player.includes(:team).order("#{params[:column]} #{params[:direction]}")
+    render(partial: 'players', locals: { players: players })
   end
 
   # GET /players/1
